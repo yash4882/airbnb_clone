@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+
+Property.create!(name: "Redisson", description: "this is property from airbnb", headline: "Property you must visit", address_1: "130 vijay nagar", address_2: "behind petrol pump", city: "indore", state: "madhya pradesh", country: "india")
