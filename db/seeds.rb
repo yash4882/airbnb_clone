@@ -9,5 +9,6 @@
 #   end
 
 
-
-Property.create!(name: "Redisson", description: "this is property from airbnb", headline: "Property you must visit", address_1: "130 vijay nagar", address_2: "behind petrol pump", city: "indore", state: "madhya pradesh", country: "india")
+10.times do 
+	Property.create!(name: "Redisson", description: "this is property from airbnb", headline: "Property you must visit", address_1: "130 vijay nagar", address_2: "behind petrol pump", city: "indore", state: "madhya pradesh", country: "india", price: Money.from_amount((10..100).to_a.sample, 'USD'))
+end
