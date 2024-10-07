@@ -9,6 +9,16 @@
 #   end
 
 
-10.times do 
-	Property.create!(name: "Redisson", description: "this is property from airbnb", headline: "Property you must visit", address_1: "130 vijay nagar", address_2: "behind petrol pump", city: "indore", state: "madhya pradesh", country: "india", price: Money.from_amount((10..100).to_a.sample, 'USD'))
+6.times do |i|
+	property = Property.create!(name: "Redisson", 
+		description: "this is property from airbnb",
+		headline: "Property you must visit",
+		address_1: "130 vijay nagar", address_2: "behind petrol pump",
+		city: "indore",
+		state: "madhya pradesh",
+		country: "india",
+		price: Money.from_amount((10..100).to_a.sample, 'USD'))
+
+	property.images.attach(io: File.open("db/images/property_#{i+1}.png"), filename: property.name)
+	property.images.attach(io: File.open("db/images/property_#{i+7}.png"), filename: property.name)
 end

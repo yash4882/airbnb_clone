@@ -13,3 +13,58 @@
  *= require_tree .
  *= require_self
  */
+.swiper {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.swiper:hover {
+	.swiper-button-next {
+		display: block !important;
+	}
+
+	.swiper-button-prev {
+		display: block !important;
+	}
+}
+
+.swiper-button-next {
+	display: none !important;
+	width: 28px !important;
+	height: 28px !important;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 50%;
+	background-image: url('assets/next.svg') !important;
+  border: 3px solid rgba(0, 0, 0, 0) !important;
+}
+
+.swiper-button-next:hover {
+	background-color: white;
+}
+
+.swiper-button-next::after {
+	content: '' !important;
+}
+
+.swiper-button-prev {
+	display: none !important;
+	width: 28px !important;
+	height: 28px !important;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 50%;
+	background-image: url('assets/prev.svg') !important;
+  border: 3px solid rgba(0, 0, 0, 0) !important;
+}
+
+.swiper-button-prev:hover {
+	background-color: white;
+}
+
+
+.swiper-button-prev::after {
+	content: '' !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: white !important; /* Set pagination bullet color to white */
+}
