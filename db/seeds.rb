@@ -7,7 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
+user = User.create({
+	email: "test@gmail.com",
+	password: "121212"
+})
 
 6.times do |i|
 	property = Property.create!(name: "Redisson", 
@@ -21,4 +24,20 @@
 
 	property.images.attach(io: File.open("db/images/property_#{i+1}.png"), filename: property.name)
 	property.images.attach(io: File.open("db/images/property_#{i+7}.png"), filename: property.name)
+
+	((1..10).to_a.sample).times do
+		Review.create({
+			content: "this content for review", 
+			cleanliness_rating: (1..5).to_a.sample, 
+			accuracy_rating: (1..5).to_a.sample, 
+			checking_rating: (1..5).to_a.sample, 
+			communication_rating: (1..5).to_a.sample, 
+			location_rating: (1..5).to_a.sample, 
+			value_rating: (1..5).to_a.sample, 
+			# final_rating: decimal, 
+			user: user, 
+			property: property
+		})
+	end
+
 end
