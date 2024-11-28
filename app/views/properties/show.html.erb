@@ -4,7 +4,11 @@
     <div class="flex justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 py-2">
       <h1 class="inline text-2xl font-medium leading-7 text-gray-900 sm:truncate"><%= @property.headline %></h1>
       <div class="space-x-1">
-        <span class="bg-white px-3 pt-2 pb-3 hover:rounded-md hover:bg-gray-100 cursor-pointer">
+        <span 
+          class="bg-white px-3 pt-2 pb-3 hover:rounded-md hover:bg-gray-100 cursor-pointer"
+          data-controller="share"
+          data-action="click->share#toggleShareModal"
+          >
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: inline; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 2; overflow: visible;"><path d="m27 18v9c0 1.1046-.8954 2-2 2h-18c-1.10457 0-2-.8954-2-2v-9m11-15v21m-10-11 9.2929-9.29289c.3905-.39053 1.0237-.39053 1.4142 0l9.2929 9.29289" fill="none"></path></svg>
           <span class="underline text-sm ms-1">
             Share
@@ -37,6 +41,8 @@
           </span>
         </span>
       </div>
+      <%#= render 'shared/modal', modalTriggerId: "share", content: 'properties/share_modal' %>
+
     </div>
     <!-- Image gallery -->
     <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-x-2 lg:px-8">
@@ -258,7 +264,7 @@
         </form>
       </div>
 
-      <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+      <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pr-8 lg:pt-6">
         <!-- Description and details -->
         <div class="border-t border-gray-200 pt-10 mt-4">
           <h3 class="sr-only">Description</h3>
@@ -266,16 +272,22 @@
           <div class="space-y-6">
             <p class="text-base text-gray-900"><%= @property.description.truncate(300) %></p>
             <% if @property.description.length > 300 %>
-              <div class="flex items-center gap-1">
-                <span class="font-medium underline">Show more</span>
+              <div
+                class="flex items-center gap-1"
+                data-controller="description"
+                data-action="click->description#toggleDescriptionModal"
+                >
+                <span class="font-medium underline cursor-pointer">Show more</span>
                 <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 12px; width: 12px; display: block; fill: var(--linaria-theme_palette-hof);" class="__web-inspector-hide-shortcut__"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
               </div>
+              <%= render 'shared/modal', modalTriggerId: "description", content: 'properties/description_modal', content_params: {description: @property.description} %>
             <% end %>
           </div>
         </div>
       </div>
+      <!-- amenities -->
+      <%= render :partial => 'properties/amenities', :locals => {:amenities => @property.amenities}%>
     </div>
-
     <!-- Reviews -->
     <%= render :partial => 'properties/reviews', :locals => {:property => @property}%>
   </main>

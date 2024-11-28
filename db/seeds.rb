@@ -1,5 +1,30 @@
 require 'open-uri'
 
+description = <<-DESCRIPTION
+Explore the nature and art oasis at our unique property. The living room, a cozy masterpiece, and the fully equipped kitchen are ideal for cooking and entertaining. Step outside to our garden patio, unwind, and enjoy morning birdsong. Tastefully decorated bedrooms, a powder room, and utility area complete the experience.
+
+Note: The property is surrounded by a residential area. Despite the initial surroundings, stepping in will fill your mood with joy and happiness.
+
+The space
+Escape to a hidden gem in the heart of nature with our beautiful and artistic property. Our spacious and welcoming home is the perfect retreat for those looking to escape the hustle and bustle of the city and reconnect with nature.
+
+As you enter through our beautifully adorned main gate with mandala art, you'll immediately feel a sense of peace and positive energy. The gate is an entryway to an amazing experience designed to help you unwind and relax.
+
+Our living room is a work of art, with fascinating elements that create a cozy and unforgettable ambiance. The room features artistic designs, which are evident in the use of color, wall decorations, and the unique furniture arrangement. The artistic flair adds a touch of elegance to the living room, making it the perfect place to spend time with family and friends.
+
+Our fully equipped kitchen is a modern open design with bamboo roofing, perfect for cooking and entertaining guests.
+
+Step outside and experience the beauty of our garden patio, complete with a lush green view and the calming sounds of chirping birds in the morning. The patio extends from the living room, offering a place to enjoy meals and relax in the fresh air. Fire up the barbecue in our cozy gazebo for a fun and relaxing evening with friends and family. The garden patio is the perfect place to unwind, read a book, or simply take a nap under the shade of a tree.
+
+The bedrooms are spacious, comfortable, and tastefully decorated, with plenty of natural light, beautiful art pieces, and a calming color scheme. The beds are comfortable, and the linens are soft and luxurious, providing the best possible sleeping experience.
+
+Even our powder room and utility area have been designed with sustainability in mind. The utility area is a cleverly designed space that is efficient and includes all the modern amenities required for your stay.
+
+Guest Policy
+The entire property is yours to enjoy! Wishing you a fun and happy stay!
+DESCRIPTION
+
+
 amenities_data = [
   {name: 'Air conditioning', icon: "air_conditioning.svg"},
   {name: 'Balcony', icon: "balcony.svg"},
@@ -42,13 +67,8 @@ amenities_data = [
   {name: 'Wifi', icon: "wifi.svg"},
 ]
 
-# amenities_data.each do |data|
-#   amenity = Amenity.create!(name: data[:name], icon: data[:icon], description: data[:description])
-# end
-
 amenities_data.each do |data|
-  amenity = Amenity.create!(name: data[:name], description: data[:description])
-  amenity.icon.attach(io: File.open("app/assets/images/amenity_icons/#{data[:icon]}"), filename: amenity.name)
+  amenity = Amenity.create!(name: data[:name], icon: data[:icon], description: data[:description])
 end
 
 pictures = []
@@ -102,7 +122,7 @@ end
 6.times do |i|
 	property = Property.create!({
 		name: Faker::Lorem.unique.sentence(word_count: 3),
-	    description: "Beautifully located in a small village called Tandi, a 10km serene drive/ride from Jibhi. And just 50 metre walking from the parking area. Once you are in our treehouse , you will get to see of a kind breathtaking view of the mountains.  We cook delicious traditional Himachali food as well as the food that you really want to have it here at our treehouse while enjoying the view.",
+	    description: description,
 	    headline: Faker::Lorem.unique.sentence(word_count: 6),
 	    address_1: Faker::Address.street_address,
 	    address_2: Faker::Address.street_name,
