@@ -34,6 +34,16 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
+gem "tailwindcss-rails", "~> 2.7"
+
+gem 'devise', '~> 4.9', '>= 4.9.3'
+
+gem 'money-rails', '~> 1.12'
+
+gem 'faker'
+
+gem 'stripe-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ], require: "debug/prelude"
@@ -43,6 +53,8 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem 'dotenv'
 end
 
 group :development do
@@ -52,12 +64,3 @@ group :development do
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
-
-
-gem "tailwindcss-rails", "~> 2.7"
-
-gem 'devise', '~> 4.9', '>= 4.9.3'
-
-gem 'money-rails', '~> 1.12'
-
-gem 'faker'
