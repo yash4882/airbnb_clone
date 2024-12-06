@@ -73,35 +73,42 @@ end
 
 pictures = []
 
-20.times do 
+10.times do 
   pictures << URI.open(Faker::LoremFlickr.image)
 end
 
 user = User.create({
 	email: "test@gmail.com",
-	password: "121212",
+	password: "121212"
+})
+
+user.profile.update!({
 	name: Faker::Lorem.unique.sentence(word_count: 3),
 	address_1: Faker::Address.street_address,
 	address_2: Faker::Address.street_name,
 	city: Faker::Address.city,
 	state: Faker::Address.state,
-	country: Faker::Address.country
+	country_code: Faker::Address.country_by_code(code: 'NL')
 })
 
-user.picture.attach(io: pictures[0], filename: user.name)
+user.profile.picture.attach(io: pictures[0], filename: user.profile.name)
 
-19.times do |i|
+9.times do |i|
 	random_user = User.create({
 		email: "test#{i+2}@gmail.com",
-		password: "121212",
+		password: "121212"
+	})
+
+	random_user.profile.update!({
 		name: Faker::Lorem.unique.sentence(word_count: 3),
 		address_1: Faker::Address.street_address,
 		address_2: Faker::Address.street_name,
 		city: Faker::Address.city,
 		state: Faker::Address.state,
-		country: Faker::Address.country
+		country_code: Faker::Address.country_by_code(code: 'NL')
 	})
-	random_user.picture.attach(io: pictures[i + 1], filename: user.name)
+
+	random_user.profile.picture.attach(io: pictures[i + 1], filename: random_user.profile.name)
 end
 
 # 6.times do |i|
@@ -128,7 +135,7 @@ end
 	    address_2: Faker::Address.street_name,
 	    city: Faker::Address.city,
 	    state: Faker::Address.state,
-	    country: Faker::Address.country,
+	    country_code: Faker::Address.country_code,
 	    price: Money.from_amount((50..100).to_a.sample, 'USD'),
 	    bedroom_count: (2..5).to_a.sample,
 	    bed_count: (4..10).to_a.sample,
@@ -177,17 +184,17 @@ end
 	# 	})
 	# end
 
-	((5..10).to_a.sample).times do
-	    Review.create!({
-	    	content: Faker::Lorem.paragraph(sentence_count: 10),
-	      	cleanliness_rating: (1..5).to_a.sample,
-	      	accuracy_rating: (1..5).to_a.sample,
-	      	checking_rating: (1..5).to_a.sample,
-	      	communication_rating: (1..5).to_a.sample,
-	      	location_rating: (1..5).to_a.sample,
-	      	value_rating: (1..5).to_a.sample,
-	      	property: property,
-	      	user: User.all.sample
-	    })
-  	end
+# 	((5..10).to_a.sample).times do
+# 	    Review.create!({
+# 	    	content: Faker::Lorem.paragraph(sentence_count: 10),
+# 	      	cleanliness_rating: (1..5).to_a.sample,
+# 	      	accuracy_rating: (1..5).to_a.sample,
+# 	      	checking_rating: (1..5).to_a.sample,
+# 	      	communication_rating: (1..5).to_a.sample,
+# 	      	location_rating: (1..5).to_a.sample,
+# 	      	value_rating: (1..5).to_a.sample,
+# 	      	property: property,
+# 	      	user: User.all.sample
+# 	    })
+#   	end
 end

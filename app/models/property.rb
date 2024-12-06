@@ -1,5 +1,5 @@
 class Property < ApplicationRecord
-	validates :name, :headline, :description, :address_1, :city, :state, :country, presence: true
+	validates :name, :headline, :description, :address_1, :city, :state, :country_code, presence: true
 	
 	monetize :price_cents, allow_nil: true
 	
