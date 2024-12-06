@@ -1,0 +1,35 @@
+<div class="mx-auto max-w-7xl lg:flex lg:gap-x-16 lg:px-8">
+	<%= render 'shared/profile_sidebar' %>
+
+	<main class="px-8 my-8 lg:flex-auto">
+		<div>
+			<h2 class="text-2xl font-semibold leading-7 text-gray-900">Login & security</h2>
+		</div>
+
+		<div class="flex flex-col mt-4">
+        	<div class="relative py-6">
+        		<div class="absolute inset-0 flex items-center" aria-hidden="true">
+        			<div class="w-full border-t border-gray-300"></div>
+        		</div>
+        	</div>
+
+        	<div>
+        		<h3 class="text-xl font-semibold text-gray-900">Login</h3>
+        		<div class="flex justify-between font mt-6">
+        			<div>
+        				<p>Password</p>
+        				<p class="font-light text-sm">Last updated at: <%= current_user.password_updated_at.in_time_zone('Kolkata').strftime('%B %d, %Y %H:%M:%S') %>
+        				</p>
+        			</div>
+        			<p class="text-primary hover:text-primary-dark underline"><%= link_to "Update", edit_password_path%></p>
+        		</div>
+        	</div>
+
+        	<div class="relative py-6">
+        		<div class="absolute inset-0 flex items-center" aria-hidden="true">
+        			<div class="w-full border-t border-gray-300"></div>
+        		</div>
+        	</div>
+        </div>
+    </main>
+</div>

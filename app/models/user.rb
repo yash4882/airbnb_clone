@@ -19,8 +19,15 @@ class User < ApplicationRecord
 
   after_create :new_profile_if_needed
 
+  after_update :update_password_timestamp, if: :saved_change_to_encrypted_password?
+  
+  private
+  
   def new_profile_if_needed
     create_profile if profile.nil?
   end
 
+  def update_password_timestamp
+    update_column(:password_updated_at, Time.current)
+  end
 end
