@@ -8,3 +8,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "el-transition" # @0.0.7
 pin "swiper" # @11.1.14
 pin "flatpickr" # @4.6.13
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

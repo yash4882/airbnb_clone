@@ -1,9 +1,9 @@
-class Property < ApplicationRecord
+	class Property < ApplicationRecord
 	validates :name, :headline, :description, :address_1, :city, :state, :country_code, presence: true
 	
 	monetize :price_cents, allow_nil: true
 	
-	has_many_attached :images
+	has_many_attached :images, dependent: :destroy
 
 	has_many :reviews, dependent: :destroy
 
@@ -17,6 +17,8 @@ class Property < ApplicationRecord
   	has_many :amenities, through: :property_amenities, source: :amenity, dependent: :destroy
 
   	has_many :payments, through: :reservations, dependent: :destroy
+
+  	has_rich_text :description
 
 	def update_average_rating
     	average_rating = reviews.average(:final_rating)

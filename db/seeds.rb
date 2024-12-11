@@ -141,6 +141,7 @@ end
 	    bed_count: (4..10).to_a.sample,
 	    guest_count: (4..20).to_a.sample,
 	    bathroom_count: (1..4).to_a.sample,
+	    user_id: User.first.id
   	})
 
 

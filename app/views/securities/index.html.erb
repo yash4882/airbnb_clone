@@ -18,8 +18,10 @@
         		<div class="flex justify-between font mt-6">
         			<div>
         				<p>Password</p>
+        				<% if current_user.password_updated_at.present? %>
         				<p class="font-light text-sm">Last updated at: <%= current_user.password_updated_at.in_time_zone('Kolkata').strftime('%B %d, %Y %H:%M:%S') %>
         				</p>
+        				<% end %>
         			</div>
         			<p class="text-primary hover:text-primary-dark underline"><%= link_to "Update", edit_password_path%></p>
         		</div>

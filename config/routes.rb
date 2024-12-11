@@ -28,4 +28,15 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  namespace :owner do
+    resources :properties do
+      member do
+        patch 'update_amenities'
+        patch 'add_images'
+        delete 'remove_image'
+      end
+    end
+    resources :reservations, only: [:index]
+  end
+
 end

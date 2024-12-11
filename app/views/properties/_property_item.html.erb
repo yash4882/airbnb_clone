@@ -8,9 +8,10 @@
           <% end %>
         </div>
         <div class="swiper-pagination "></div>
-
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+          <% if property.images.count > 1 %>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          <% end %>
       </div>
 
       <div class="absolute z-10 right-0 top-0 m-4">
@@ -38,7 +39,7 @@
     <!-- Property Details Section -->
     <div class="mt-4">
       <div class="flex justify-between">
-        <h3 class="text-sm font-semibold text-gray-700">
+        <h3 class="text-sm font-semibold text-gray-700 line-clamp-1">
           <%= property.city %>, <%= country_name(property.country_code) %>
         </h3>
         <p class="flex items-center text-sm font-light">

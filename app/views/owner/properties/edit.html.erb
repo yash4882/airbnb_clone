@@ -1,0 +1,70 @@
+<div class="mx-auto max-w-7xl lg:flex lg:gap-x-16 lg:px-8">
+  <%= render 'shared/owner_sidebar' %>
+  <main>
+  	<%# images %>
+  	<div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
+	    <div>
+	      <h2 class="text-base font-semibold leading-7 text-gray-900">Property Images</h2>
+
+	      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2	 mt-8">
+				  <% @property.images.each do |image| %>
+				    <div class="h-full w-full relative">
+				      <%= image_tag image, class: "h-48 w-48 object-cover"%>
+				      <%= link_to remove_image_owner_property_path(image_id: image.id), data: { turbo_method: :delete }, class: "absolute top-2 right-4 text-black hover:text-red rounded-full bg-white p-0.5 opacity-50 hover:opacity-80" do %>
+				        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+				          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+				        </svg>
+				      <% end %>
+				    </div>
+				  <% end %>
+				</div>
+
+				<%= form_with model: @property, url: add_images_owner_property_path, class:'mt-6' do |f| %>
+	        <div>
+	          <div class="flex gap-4 items-center">
+          		<%= f.label "Add Images", class:'block text-sm font-medium leading-6 text-gray-900' %>
+	            <%= f.file_field :images, class: "block w-min text-sm text-slate-500
+	            file:mr-4 file:py-2 file:px-4
+	            file:rounded-full file:border-0
+	            file:text-sm file:font-semibold
+	            file:bg-gray-50 file:text-primary
+	            hover:file:bg-gray-100",
+	            id: "multiple_files", type: "file", multiple: true %>
+	          </div>
+	        </div>
+
+	         <div class="col-span-full">
+	          <%= f.submit "Save", class:"cursor-pointer mt-6 flex items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2" %>
+	        </div>
+        <% end %>
+	    </div>
+	  </div>
+
+	  <%# property info %>
+	  <%= render 'owner/properties/form', path: owner_property_path %>
+
+	  <%# amenities %>
+	  <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
+	    <div>
+	      <h2 class="text-base font-semibold leading-7 text-gray-900">Amenities</h2>
+
+	      <%= form_with model: @property, url: update_amenities_owner_property_path, class:'mt-6' do |f| %>
+			<div class="mt-6 grid grid-cols-1 md:grid-cols-2">
+				<% Amenity.all.each do |amenity| %>
+					<div class="flex items-center py-2">
+						<%= f.check_box :amenity_ids, {class:"mr-2 w-5 h-5 text-primary hover:text-primary-dark bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-1", multiple: :true}, amenity.id, nil %>
+						<%= image_tag "amenity_icons/#{amenity.icon}", class: "h-6 w-6"%>
+						<%= f.label amenity.name, class:"ms-4 font-light"%>
+					</div>
+				<% end %>
+			</div>
+
+	        <div class="col-span-full">
+	          <%= f.submit "Save", class:"cursor-pointer mt-6 flex items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2" %>
+	        </div>
+	      <% end %>
+	    </div>
+	  </div>
+  </main>
+
+</div>
