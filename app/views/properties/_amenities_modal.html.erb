@@ -7,12 +7,9 @@
     </button>
     <div class="py-6">
         <h2 class="text-xl font-medium leading-6 text-gray-900">What this place offers</h2>
-        <div class="mt-6 ">
+        <div class="mt-6 grid grid-cols-1 gap-2">
             <% content_params[:amenities].limit(10).each do |amenity| %>
-                <div class="flex py-4">
-                    <%= image_tag "amenity_icons/#{amenity.icon}", class: "h-6 w-6"%>
-                    <p class="ms-4 font-light"><%= amenity.name %></p>      
-                </div>
+                <%= render 'properties/amenity_item', amenity: amenity %>
                 <div class="inset-0 flex items-center py-1" aria-hidden="true">
                   <div class="w-full border-t border-gray-200"></div>
                 </div>

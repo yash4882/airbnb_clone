@@ -43,7 +43,7 @@ class BookingPaymentsController < ApplicationController
 
     Payment.create!(
       reservation_id: reservation.id,
-      # per_night: property.price,
+      per_night: property.price,
       base_fare: Money.from_amount(BigDecimal(booking_params[:base_fare])),
       service_fee: Money.from_amount(BigDecimal(booking_params[:service_fee])),
       total_amount: Money.from_amount(BigDecimal(booking_params[:total_amount])),

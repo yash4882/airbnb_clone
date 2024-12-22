@@ -1,5 +1,5 @@
-	class Property < ApplicationRecord
-	validates :name, :headline, :description, :address_1, :city, :state, :country_code, presence: true
+class Property < ApplicationRecord
+	validates :name, :headline, :description, :address_1, :city, :state, :country_code, :latitude, :longitude, presence: true
 	
 	monetize :price_cents, allow_nil: true
 	
@@ -19,6 +19,10 @@
   	has_many :payments, through: :reservations, dependent: :destroy
 
   	has_rich_text :description
+
+	def self.with_reservations_overlap(checkin_date, checkout_date)
+		where.not(id: Reservation.overlapping_reservations(checkin_date, checkout_date).pluck(:property_id))
+	end
 
 	def update_average_rating
     	average_rating = reviews.average(:final_rating)

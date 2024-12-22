@@ -49,15 +49,14 @@
 	      <h2 class="text-base font-semibold leading-7 text-gray-900">Amenities</h2>
 
 	      <%= form_with model: @property, url: update_amenities_owner_property_path, class:'mt-6' do |f| %>
-			<div class="mt-6 grid grid-cols-1 md:grid-cols-2">
-				<% Amenity.all.each do |amenity| %>
-					<div class="flex items-center py-2">
-						<%= f.check_box :amenity_ids, {class:"mr-2 w-5 h-5 text-primary hover:text-primary-dark bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-1", multiple: :true}, amenity.id, nil %>
-						<%= image_tag "amenity_icons/#{amenity.icon}", class: "h-6 w-6"%>
-						<%= f.label amenity.name, class:"ms-4 font-light"%>
-					</div>
-				<% end %>
-			</div>
+					<div class="mt-6 grid grid-cols-1 md:grid-cols-2">
+            <% Amenity.all.each do|amenity| %>
+              <div class="flex items-center gap-2">
+                <%= f.check_box :amenity_ids, {class: 'w-6 h-6 mr-2 py-2 rounded-md text-primary focus:ring-primary', multiple: :true}, amenity.id, nil  %>
+                <%= render 'properties/amenity_item', amenity: amenity %>
+              </div>
+            <% end %>
+          </div>
 
 	        <div class="col-span-full">
 	          <%= f.submit "Save", class:"cursor-pointer mt-6 flex items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-primary-dark focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2" %>
