@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   namespace :owner do
     resources :properties do
       member do
+        patch 'update_location'
         patch 'update_amenities'
         patch 'add_images'
         delete 'remove_image'

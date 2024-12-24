@@ -126,9 +126,9 @@ end
 # 		bathroom_count: (1..4).to_a.sample,
 # 		)
 
-6.times do |i|
+9.times do |i|
 	property = Property.create!({
-		name: Faker::Lorem.unique.sentence(word_count: 3),
+			name: Faker::Lorem.unique.sentence(word_count: 3),
 	    description: description,
 	    headline: Faker::Lorem.unique.sentence(word_count: 6),
 	    address_1: Faker::Address.street_address,
@@ -136,8 +136,8 @@ end
 	    city: Faker::Address.city,
 	    state: Faker::Address.state,
 	    country_code: Faker::Address.country_code,
-	    latitude: Faker::Address.country_code,
-	    longitude: Faker::Address.country_code,
+     	latitude: Faker::Address.latitude,
+    	longitude: Faker::Address.longitude,
 	    price: Money.from_amount((50..100).to_a.sample, 'USD'),
 	    bedroom_count: (2..5).to_a.sample,
 	    bed_count: (4..10).to_a.sample,

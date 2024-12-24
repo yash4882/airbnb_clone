@@ -19,6 +19,8 @@
     <% if controller_name == 'booking_payments' && action_name == 'create'%>
       <%= stripe_javascript_tag %>
     <% end %>
+   
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
     <link
       rel="stylesheet"
