@@ -1,12 +1,12 @@
-<div class="mx-auto max-w-7xl lg:flex lg:gap-x-16 lg:px-8">
+<div class="mx-auto container pt-20 lg:flex lg:gap-x-16 lg:px-8">
   <%= render 'shared/owner_sidebar' %>
-  <main>
+  <main class="lg:ml-64 px-8 my-8 lg:flex-auto" >
   	<%# images %>
-  	<div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
+  	<div class="px-8 py-8 border border-gray-300 rounded-xl lg:flex-auto my-8">
 	    <div>
 	      <h2 class="text-base font-semibold leading-7 text-gray-900">Property Images</h2>
 
-	      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2	 mt-8">
+	      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2	mt-8">
 				  <% @property.images.each do |image| %>
 				    <div class="h-full w-full relative">
 				      <%= image_tag image, class: "h-48 w-48 object-cover"%>
@@ -44,7 +44,7 @@
 	  <%= render 'owner/properties/form', path: owner_property_path %>
 
 	  <%# google loaction %>
-	  <div class="px-8 py-8 border rounded-md lg:flex-auto my-8 " data-controller="map">
+	  <div class="px-8 py-8 border border-gray-300 rounded-xl lg:flex-auto my-8 " data-controller="map">
 	    <div>
 	      <h2 class="text-base font-semibold leading-7 text-gray-900">Google Location</h2>
 
@@ -64,7 +64,7 @@
 	  </div>
 
 	  <%# amenities %>
-	  <div class="px-8 py-8 border rounded-md lg:flex-auto my-8">
+	  <div class="px-8 py-8 border border-gray-300 rounded-xl lg:flex-auto my-8">
 	    <div>
 	      <h2 class="text-base font-semibold leading-7 text-gray-900">Amenities</h2>
 

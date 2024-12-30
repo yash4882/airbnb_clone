@@ -7,6 +7,8 @@
 	</button>
 	<div class="py-6">
 		<h2 class="text-xl font-medium leading-6 text-gray-900">About this place</h2>
-		<p class="text-base text-gray-900 mt-6"><%= @property.description %></p>
+		<div class="mt-6 overflow-y-auto h-[calc(80vh-112px)] pr-4">
+			<p class="text-base text-gray-900"><%= @property.description %></p>
+		</div>
 	</div>
 </div>

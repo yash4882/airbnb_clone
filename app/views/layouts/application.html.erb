@@ -37,7 +37,7 @@
   <body>
     <%= render "shared/notification" %>
     <% if controller_name != 'registrations' && controller_name != 'sessions'  %>
-    <%= render "layouts/header" %>
+      <%= render "layouts/header" %>
     <% end %>
     <%= yield %>
   </body>
