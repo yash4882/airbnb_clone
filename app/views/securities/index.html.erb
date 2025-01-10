@@ -35,9 +35,8 @@
         	 <div>
         		<h3 class="text-xl font-semibold text-gray-900">Account</h3>
         		<div class="flex justify-between font mt-6">
-        			<%# TODO: implement user destroy path %>
-        			<p>Deactivate your account</p>
-        			<p class="text-primary hover:text-primary-dark underline"><%= link_to "Deactivate", root_path%></p>
+        			<p>Delete your account</p>
+        			<%= button_to 'Delete Account', delete_account_path, method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class:"text-primary hover:text-primary-dark underline" %>
         		</div>
         	</div>
         </div>

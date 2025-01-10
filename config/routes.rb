@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
   root "home#index"
+
+  devise_for :users
+
+  devise_scope :user do
+    delete 'users/delete_account', to: 'devise/registrations#destroy', as: :delete_account
+  end
 
   namespace :api do
     resources :wishlists, only: [:create, :destroy]
