@@ -4,22 +4,21 @@ const application = Application.start()
 
 // Configure Stimulus development experience
 application.debug = false
-window.Stimulus   = application
+window.Stimulus = application
 
 export { application }
 
-
 const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  loop: true,
+    // Optional parameters
+    loop: true,
 
-  pagination: {
-    el: '.swiper-pagination',
-  },
+    pagination: {
+        el: '.swiper-pagination',
+    },
 
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
 });

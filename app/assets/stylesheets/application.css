@@ -17,39 +17,39 @@
  
 /* HTML marker styles */
 .price-tag {
-  background-color: #FF385C;
-  border-radius: 8px;
-  color: #FFFFFF;
-  font-size: 14px;
-  padding: 10px 15px;
-  position: relative;
+	background-color: #FF385C;
+	border-radius: 8px;
+	color: #FFFFFF;
+	font-size: 14px;
+	padding: 10px 15px;
+	position: relative;
 }
 
 .price-tag::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, 0);
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid #FF385C;
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	transform: translate(-50%, 0);
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid #FF385C;
 }
 
 #profile_country_code {
-  border: 1px solid gray;
-  border-radius: 6px;
-  height: 36px;
-  margin-top: 8px;
-  font-size: 14px;
-  padding-top: 6px;
+	border: 1px solid gray;
+	border-radius: 6px;
+	height: 36px;
+	margin-top: 8px;
+	font-size: 14px;
+	padding-top: 6px;
 }
 
 .swiper {
-  width: 100%;
-  aspect-ratio: 1/1;
+	width: 100%;
+	aspect-ratio: 1/1;
 }
 
 .swiper:hover {
